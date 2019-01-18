@@ -1,0 +1,13 @@
+<h2>Doctor Details</h2>
+
+<%= @doctor.name %>
+<br/>
+<%= @doctor.location_x %>
+<br/>
+<%= @doctor.location_y %>
+<br/>
+<br/>
+
+<%= link_to "Edit Doctor Details", edit_doctor_path%>
+<br/>
+<%= link_to "Delete Doctor", destroy_doctor_path, method: :delete %>

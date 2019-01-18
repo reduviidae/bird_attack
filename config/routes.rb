@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  resources :attacks
-  resources :birds
-  resources :doctors
-  resources :foods
-  resources :children
+  resources :attacks, only: [:index, :show, :new, :create, :edit, :update]
+  delete '/attacks/:id/delete', to: 'attacks#destroy', as: 'destroy_attack'
+  resources :birds, only: [:index, :show, :new, :create, :edit, :update]
+  delete '/birds/:id/delete', to: 'birds#destroy', as: 'destroy_bird'
+  resources :doctors, only: [:index, :show, :new, :create, :edit, :update]
+  delete '/doctors/:id/delete', to: 'doctors#destroy', as: 'destroy_doctor'
+  resources :foods, only: [:index, :show, :new, :create, :edit, :update]
+  delete '/foods/:id/delete', to: 'foods#destroy', as: 'destroy_food'
+  resources :children, only: [:index, :show, :new, :create, :edit, :update]
+  delete '/children/:id/delete', to: 'children#destroy', as: 'destroy_children'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/', to: 'children#home'
 end

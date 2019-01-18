@@ -1,0 +1,7 @@
+<h2>All Birds</h2>
+
+<% @birds.each do |bird| %>
+<%= link_to bird.species, bird_path(bird) %><br/>
+<% end %>
+<br/>
+<%= link_to "Add A New Bird", new_bird_path%>

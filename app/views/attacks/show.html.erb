@@ -1,0 +1,12 @@
+<h2>Attack Details</h2>
+
+<%= @attack.date %>
+<br/>
+<%= link_to @attack.child.name, child_path(@attack.child) %>
+<br/>
+<%= link_to @attack.bird.species, bird_path(@attack.bird) %>
+<br/>
+<br/>
+<%= link_to "Edit Attack Details", edit_attack_path%>
+<br/>
+<%= link_to "Delete Attack Occurence", destroy_attack_path, method: :delete%>

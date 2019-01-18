@@ -1,0 +1,7 @@
+<h2>All Attack Encounters</h2>
+
+<% @attacks.each do |attack| %>
+<%= link_to "#{attack.date} - #{attack.child.name} - #{attack.bird.species}", attack_path(attack) %><br/>
+<% end %>
+<br/>
+<%= link_to "Add A New Attack Encounter", new_attack_path%>

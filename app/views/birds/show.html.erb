@@ -1,0 +1,12 @@
+<h2>Bird Details</h2>
+
+<%= @bird.species %>
+<br/>
+<%= @bird.sickness %>
+<br/>
+<%= @bird.attack %>
+<br/>
+<br/>
+<%= link_to "Edit Bird Details", edit_bird_path%>
+<br/>
+<%= link_to "Delete Bird", destroy_bird_path, method: :delete %>

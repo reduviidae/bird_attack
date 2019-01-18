@@ -1,0 +1,13 @@
+<h2>Food Details</h2>
+
+<%= @food.name %>
+<br/>
+<%= @food.location_x %>
+<br/>
+<%= @food.location_y %>
+<br/>
+<br/>
+
+<%= link_to "Edit Food Details", edit_food_path%>
+<br/>
+<%= link_to "Delete Food", destroy_food_path, method: :delete %>

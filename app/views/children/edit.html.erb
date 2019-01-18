@@ -1,0 +1,9 @@
+<h2>Edit Child Details</h2>
+
+<%= form_for @child do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :password %>
+<%= f.text_field :password %>
+<%= f.submit "Submit Child" %>
+<% end %>

@@ -1,0 +1,7 @@
+<h2>All User Accounts</h2>
+
+<% @children.each do |child| %>
+<%= link_to child.name, child_path(child) %><br/>
+<% end %>
+<br/>
+<%= link_to "Add A New User", new_child_path%>

@@ -1,0 +1,7 @@
+<h2>Edit Food Details</h2>
+
+<%= form_for @food do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.submit "Submit Food" %>
+<% end %>

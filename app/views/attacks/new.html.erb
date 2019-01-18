@@ -1,0 +1,11 @@
+<h2>Add a New Attack Instance</h2>
+
+<%= form_for @attack do |f| %>
+<%= f.label :child_id %>
+<%= f.collection_select :child_id, @children, :id, :name %>
+<%= f.label :bird_id %>
+<%= f.collection_select :bird_id, @birds, :id, :species %>
+<%= f.label :date %>
+<%= f.text_field :date %>
+<%= f.submit "Submit Attack" %>
+<% end %>

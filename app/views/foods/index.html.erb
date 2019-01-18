@@ -1,0 +1,7 @@
+<h2>All the Foooooods</h2>
+
+<% @foods.each do |food| %>
+<%= link_to food.name, food_path(food) %><br/>
+<% end %>
+<br/>
+<%= link_to "Add A New Food", new_food_path%>

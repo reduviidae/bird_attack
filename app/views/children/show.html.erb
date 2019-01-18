@@ -1,0 +1,16 @@
+<h2>Child Details</h2>
+
+<%= @child.name %>
+<br/>
+<%= @child.hp %>
+<br/>
+<%= @child.hunger %>
+<br/>
+<%= @child.location_x %>
+<br/>
+<%= @child.location_y %>
+<br/>
+<br/>
+<%= link_to "Edit Child Details", edit_child_path%>
+<br/>
+<%= link_to "Delete Child", destroy_children_path, method: :delete %>
