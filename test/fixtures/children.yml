@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  password: MyString
+  hp: 1
+  hunger: 1
+  location_x: 1
+  location_y: 1
+
+two:
+  name: MyString
+  password: MyString
+  hp: 1
+  hunger: 1
+  location_x: 1
+  location_y: 1

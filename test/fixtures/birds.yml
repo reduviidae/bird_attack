@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  species: MyString
+  sickness: false
+  attack: 1
+
+two:
+  species: MyString
+  sickness: false
+  attack: 1
