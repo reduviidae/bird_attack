@@ -11,6 +11,8 @@ class FoodsController < ApplicationController
   def new
     @food = Food.new
     #RANDOMLY GENERATE X AND Y COORDINATES
+    @location_x = rand(2)
+    @location_y = rand(3)
   end
 
   def create

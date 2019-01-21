@@ -1,6 +1,34 @@
 class ChildrenController < ApplicationController
-
+  before_action :current_child, only: [:home, :north, :east, :west, :south]
   def home
+    doctor_exist?
+    food_exist?
+    bird_attack?
+    render :home
+
+  end
+
+  def north
+    @child.location_x += 1
+    @child.save
+    render :home
+  end
+
+  def east
+    @child.location_y -= 1
+    @child.save
+    render :home
+  end
+
+  def west
+    @child.location_y += 1
+    @child.save
+    render :home
+  end
+
+  def south
+    @child.location_x -= 1
+    @child.save
     render :home
   end
 
@@ -59,4 +87,10 @@ class ChildrenController < ApplicationController
   def bird_attack?
     @bird_attack = [true, false].sample
   end
+
+  def current_child
+    @child = Child.all[0]
+  end
+
+
 end

@@ -1,0 +1,32 @@
+<div class="grid-container">
+
+<% if @child.location_x < 2 %>
+
+  <div id="north"><%= form_tag('/north') do %>
+    <%= submit_tag "North" %>
+  <% end %>
+  </div>
+<% end %>
+
+<% if @child.location_y > 0 %>
+  <div id="east"><%= form_tag('/east') do %>
+    <%= submit_tag "East" %>
+  <% end %>
+  </div>
+<% end %>
+
+<% if @child.location_y < 3 %>
+  <div id="west"><%= form_tag('/west') do %>
+    <%= submit_tag "West" %>
+  <% end %>
+  </div>
+<% end %>
+
+<% if @child.location_x > 0 %>
+  <div id="south"><%= form_tag('/south') do %>
+    <%= submit_tag "South" %>
+  <% end %>
+  </div>
+<% end %>
+
+</div>

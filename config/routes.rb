@@ -11,4 +11,8 @@ Rails.application.routes.draw do
   delete '/children/:id/delete', to: 'children#destroy', as: 'destroy_children'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/', to: 'children#home'
+  post '/north', to: 'children#north'
+  post '/east', to: 'children#east'
+  post '/west', to: 'children#west'
+  post '/south', to: 'children#south'
 end
