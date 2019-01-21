@@ -1,15 +1,8 @@
 class ChildrenController < ApplicationController
-  # before_action :find_children
-  #
-  # def home
-  #   render :home
-  # end
-  #
-  # private
-  #
-  # def find_children
-  #   @children = Child.all
-  # end
+
+  def home
+    render :home
+  end
 
   def index
     @children = Child.all
@@ -22,9 +15,14 @@ class ChildrenController < ApplicationController
   def new
     @child = Child.new
     #MUST RANDOMLY GENERATE HP, HUNGER, X, AND Y
+    @hp = rand(50..100)
+    @hunger = rand(1..5)
+    @location_x = rand(2)
+    @location_y = rand(3)
   end
 
   def create
+    byebug
     @child = Child.create(child_params)
     redirect_to @child
   end
@@ -47,7 +45,18 @@ class ChildrenController < ApplicationController
 
   private
   def child_params
-    params.require(:child).permit(:name, :password, :hp, :hunger, :sickness, :location_x, :location_y)
+    params.require(:child).permit(:name, :password, :hp, :hunger, :location_x, :location_y)
   end
 
+  def doctor_exist?
+    @doctor_exist = [true, false, false, false].sample
+  end
+
+  def food_exist?
+    @food_exist = [true, false, false].sample
+  end
+
+  def bird_attack?
+    @bird_attack = [true, false].sample
+  end
 end

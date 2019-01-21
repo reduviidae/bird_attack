@@ -39,4 +39,5 @@ class DoctorsController < ApplicationController
     params.require(:doctor).permit(:hp, :location_x, :location_y)
   end
 
+
 end
