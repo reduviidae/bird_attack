@@ -15,6 +15,10 @@
   </div>
 <% end %>
 
+<div id="baby">
+  <iframe src="https://giphy.com/embed/XweOsBl72PFcc" width="120" height="84" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+</div>
+
 <% if @child.location_y < 3 %>
   <div id="west"><%= form_tag('/west') do %>
     <%= submit_tag "West" %>
@@ -28,5 +32,20 @@
   <% end %>
   </div>
 <% end %>
+
+<div id="hp">
+  <h3>Hitpoints:</h3> <br>
+  <h4><%= @child.hp %></h4>
+</div>
+
+<div id="hunger">
+  <h3>Hunger:</h3> <br>
+  <h4><%= @child.hunger %></h4>
+</div>
+
+<div id="sickness">
+  <h3>Sickness:</h3> <br>
+  <h4><%= @child.sickness %></h4>
+</div>
 
 </div>

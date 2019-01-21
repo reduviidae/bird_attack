@@ -1,35 +1,60 @@
 class ChildrenController < ApplicationController
-  before_action :current_child, only: [:home, :north, :east, :west, :south]
+  before_action :current_child, only: [:home, :north, :east, :west, :south, :food, :doctor]
   def home
     doctor_exist?
     food_exist?
-    bird_attack?
-    render :home
 
+    if bird_attack?
+      @child.hp -= rand(5..25)
+      @child.save
+      @bird = Bird.all.sample
+      if @bird.sickness
+        @child.sickness = true
+        @child.save
+      end
+    end
+
+    @child.hunger += rand(2..10)
+    @child.save
+    render :home
   end
 
   def north
     @child.location_x += 1
     @child.save
-    render :home
+    redirect_to "/"
+  end
+
+  def food
+    @food = Food.all.sample
+    @child.hunger -= @food.hunger_decrease
+    @child.save
+    redirect_to "/"
+  end
+
+  def doctor
+    @doctor = Doctor.all.sample
+    @child.hp += @doctor.hp
+    @child.save
+    redirect_to "/"
   end
 
   def east
     @child.location_y -= 1
     @child.save
-    render :home
+    redirect_to "/"
   end
 
   def west
     @child.location_y += 1
     @child.save
-    render :home
+    redirect_to "/"
   end
 
   def south
     @child.location_x -= 1
     @child.save
-    render :home
+    redirect_to "/"
   end
 
   def index
@@ -50,7 +75,6 @@ class ChildrenController < ApplicationController
   end
 
   def create
-    byebug
     @child = Child.create(child_params)
     redirect_to @child
   end

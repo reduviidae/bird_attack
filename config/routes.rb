@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   post '/east', to: 'children#east'
   post '/west', to: 'children#west'
   post '/south', to: 'children#south'
+  post '/food', to: 'children#food'
+  post '/doctor', to: 'children#doctor'
 end

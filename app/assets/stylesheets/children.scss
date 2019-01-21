@@ -19,3 +19,47 @@
   grid-row: 3;
   grid-column-start: 2;
 }
+
+#baby {
+  grid-row: 2;
+  grid-column-start: 2;
+}
+
+#hp {
+  grid-row: 4;
+  grid-column-start: 1;
+}
+
+#hunger {
+  grid-row: 4;
+  grid-column-start: 2;
+}
+
+#sickness {
+  grid-row: 4;
+  grid-column-start: 3;
+}
+
+#baby {
+  grid-row: 2;
+  grid-colum-start: 2;
+}
+
+input[type="submit"] {
+  border: none;
+  background-color: #AAF0D1;
+  border-radius: 50%;
+  font-family: 'Raleway', sans-serif;
+  height: 40px;
+  width: 50px;
+}
+
+#doctor {
+  width: 100px;
+  background-color: #AFE313;
+}
+
+#food {
+  width: 100px;
+  background-color: #FAFA37;
+}
