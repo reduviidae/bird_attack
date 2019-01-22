@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   post '/south', to: 'children#south'
   post '/food', to: 'children#food'
   post '/doctor', to: 'children#doctor'
+
 end

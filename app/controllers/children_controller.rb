@@ -1,5 +1,6 @@
 class ChildrenController < ApplicationController
   before_action :current_child, only: [:home, :north, :east, :west, :south, :food, :doctor]
+  before_action :alive?, only: [:home]
   def home
     doctor_exist?
     food_exist?
@@ -16,7 +17,12 @@ class ChildrenController < ApplicationController
 
     @child.hunger += rand(2..10)
     @child.save
-    render :home
+
+    if alive?
+      render :home
+    else
+      render :death
+    end
   end
 
   def north
@@ -95,6 +101,10 @@ class ChildrenController < ApplicationController
     redirect_to children_path
   end
 
+  def death
+    render :death
+  end
+
   private
   def child_params
     params.require(:child).permit(:name, :password, :hp, :hunger, :location_x, :location_y)
@@ -114,6 +124,14 @@ class ChildrenController < ApplicationController
 
   def current_child
     @child = Child.all[0]
+  end
+
+  def alive?
+    if current_child.hp > 0 && current_child.hunger < 100
+      true
+    else
+      false
+    end
   end
 
 
