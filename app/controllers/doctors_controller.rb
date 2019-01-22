@@ -11,6 +11,9 @@ class DoctorsController < ApplicationController
   def new
     @doctor = Doctor.new
     #RANDOMLY GENERATE X AND Y COORDINATES
+    @location_x = rand(2)
+    @location_y = rand(3)
+    @hp = rand(25..100)
   end
 
   def create
@@ -38,5 +41,6 @@ class DoctorsController < ApplicationController
   def doctor_params
     params.require(:doctor).permit(:hp, :location_x, :location_y)
   end
+
 
 end

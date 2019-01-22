@@ -1,3 +1,5 @@
-<h1>Go with caution, child.</h1>
-
-<%= render "/gameboard/grid" %>
+<% if @bird_attack %>
+  <%= render "/gameboard/bird_attack" %>
+<% end %>
+<%= render "/gameboard/options" %>
+<%= render "/gameboard/navigation" %>

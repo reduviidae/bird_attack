@@ -1,0 +1,16 @@
+<% if @doctor_exist %>
+
+<h3>There's a doctor here!</h3><br>
+<%= form_tag('/doctor') do %>
+<%= submit_tag "Get treatment", :id => "doctor"%>
+<% end %>
+<br>
+<% end %>
+
+<% if @food_exist %>
+<h3>There's food here!</h3> <br>
+<%= form_tag('/food') do %>
+<%= submit_tag "Eat food", :id => "food" %>
+<% end %>
+<br>
+<% end %>

@@ -13,24 +13,21 @@
  *= require_tree .
  *= require_self
  */
+h1 {
+  font-family: 'Knewave', cursive;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
 
  .grid-container {
    display: grid;
+   grid-template-columns: repeat(3, 175px);
+   grid-template-rows: repeat(4, 100px);
  }
 
  .grid-item {
-   border-style: solid;
+   border-style: dashed;
    height: 100px;
- }
-
- #x0y0 {
-   grid-column-start: 1;
- }
-
- #x1y0 {
-   grid-column-start: 2;
- }
-
- #x2y0 {
-   grid-column-start: 3;
  }

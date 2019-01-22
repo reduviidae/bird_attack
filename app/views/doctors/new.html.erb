@@ -3,5 +3,9 @@
 <%= form_for @doctor do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %>
+<%= f.number_field :hp, value: @hp, hidden: true %>
+<%= f.number_field :location_x, value: @location_x, hidden: true %>
+<%= f.number_field :location_y, value: @location_y, hidden: true %>
+
 <%= f.submit "Submit Doctor" %>
 <% end %>
