@@ -1,4 +1,20 @@
+<div class="bird-container">
+
 <h1>You've been attacked by a <%= @bird.species %>!</h1>
 <% if @bird.sickness %>
   <h1>You've been infected!</h1>
 <% end %>
+
+  <% case @bird.species %>
+  <% when "Duck" %>
+    <%= image_tag("https://media.giphy.com/media/krewXUB6LBja/giphy.gif") %>
+  <% when "Swans" %>
+    <%= image_tag("https://media.giphy.com/media/aWKpZHKmX0onu/giphy.gif") %>
+  <% when "Chicken" %>
+    <%= image_tag("https://thumbs.gfycat.com/SparklingEdibleDog-size_restricted.gif") %>
+  <% when "Pigeon" %>
+    <%= image_tag("http://4.bp.blogspot.com/-P-4GekKZu-o/UovIRMJuIhI/AAAAAAAAAYc/1zsw-WmIfYg/s1600/Big-Pigeon-Attack.gif") %>
+  <% when "Cow" %>
+    <%= image_tag("http://gifgifmagazine.com/wp-content/uploads/2017/01/gz9Cm.gif") %>
+  <% end %>
+</div>

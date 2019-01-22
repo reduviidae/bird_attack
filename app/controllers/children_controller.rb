@@ -10,6 +10,8 @@ class ChildrenController < ApplicationController
       $globalchild.hp -= rand(5..25)
       $globalchild.save
       @bird = Bird.all.sample
+      @child.hp -= @bird.attack
+      @child.save
       if @bird.sickness
         $globalchild.sickness = true
         $globalchild.save
@@ -64,6 +66,15 @@ class ChildrenController < ApplicationController
     # render :login
     # $globalchild = current_child
     # redirect_to play_path
+  end
+
+  def start_over
+    @child.hp = rand(50..100)
+    @child.hunger = rand(1..5)
+    @child.location_x = rand(2)
+    @child.location_y = rand(3)
+    @child.save
+    redirect_to "/"
   end
 
   def index
@@ -134,6 +145,14 @@ class ChildrenController < ApplicationController
   end
 
 
+
+  def alive?
+    if current_child.hp > 0 && current_child.hunger < 100
+      true
+    else
+      false
+    end
+  end
 
 
 end

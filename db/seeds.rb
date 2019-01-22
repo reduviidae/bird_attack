@@ -35,7 +35,7 @@ doctor5 = Doctor.create(name: "Dr. Duckmans", location_x: 1, location_y: 2, hp_i
 bird1 = Bird.create(species: "Duck", sickness: false, attack:1)
 bird2 = Bird.create(species: "Pigeon", sickness: false, attack:50)
 bird3 = Bird.create(species: "Chicken", sickness: false, attack:25)
-bird4 = Bird.create(species: "Swans", sickness: false, attack:30)
+bird4 = Bird.create(species: "Swans", sickness: true, attack:30)
 bird5 = Bird.create(species: "Cow", sickness: false, attack:100)
 
 attack1 = Attack.create(date:"2014-12-01", child_id: child1, bird_id: bird1)
