@@ -1,14 +1,10 @@
 <h2>Child Details</h2>
 
-<%= @child.name %>
+<label>Name: <%= @child.name %></label>
 <br/>
-<%= @child.hp %>
+<label>HP: <%= @child.hp %></label>
 <br/>
-<%= @child.hunger %>
-<br/>
-<%= @child.location_x %>
-<br/>
-<%= @child.location_y %>
+<label> Hunger: <%= @child.hunger %></label>
 <br/>
 <br/>
 <%= link_to "Edit Child Details", edit_child_path%>

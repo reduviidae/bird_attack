@@ -1,98 +1,119 @@
 class ChildrenController < ApplicationController
-  before_action :current_child, only: [:home, :north, :east, :west, :south, :food, :doctor]
+  #before_action :current_child, only: [:home, :north, :east, :west, :south, :food, :doctor]
+  $globalchild = nil
+
   def home
     doctor_exist?
     food_exist?
-
+    byebug
     if bird_attack?
-      @child.hp -= rand(5..25)
-      @child.save
+      $globalchild.hp -= rand(5..25)
+      $globalchild.save
       @bird = Bird.all.sample
       if @bird.sickness
-        @child.sickness = true
-        @child.save
+        $globalchild.sickness = true
+        $globalchild.save
       end
     end
 
-    @child.hunger += rand(2..10)
-    @child.save
+    $globalchild.hunger += rand(2..10)
+    $globalchild.save
     render :home
   end
 
   def north
-    @child.location_x += 1
-    @child.save
-    redirect_to "/"
+    $globalchild.location_x += 1
+    $globalchild.save
+    redirect_to play_path
   end
 
   def food
     @food = Food.all.sample
-    @child.hunger -= @food.hunger_decrease
-    @child.save
-    redirect_to "/"
+    $globalchild.hunger -= @food.hunger_decrease
+    $globalchild.save
+    redirect_to play_path
   end
 
   def doctor
     @doctor = Doctor.all.sample
-    @child.hp += @doctor.hp
-    @child.save
-    redirect_to "/"
+    $globalchild.hp += @doctor.hp_increase
+    $globalchild.save
+    redirect_to play_path
   end
 
   def east
-    @child.location_y -= 1
-    @child.save
-    redirect_to "/"
+    $globalchild.location_y -= 1
+    $globalchild.save
+    redirect_to play_path
   end
 
   def west
-    @child.location_y += 1
-    @child.save
-    redirect_to "/"
+    $globalchild.location_y += 1
+    $globalchild.save
+    redirect_to play_path
   end
 
   def south
-    @child.location_x -= 1
-    @child.save
-    redirect_to "/"
+    $globalchild.location_x -= 1
+    $globalchild.save
+    redirect_to play_path
+  end
+
+  def login
+    # $globalchild = Child.new
+    # render :login
+    # $globalchild = current_child
+    # redirect_to play_path
   end
 
   def index
-    @children = Child.all
+    $globalchildren = Child.all
   end
 
   def show
-    @child = Child.find(params[:id])
+    $globalchild = Child.find(params[:id])
   end
 
   def new
-    @child = Child.new
+    $globalchild = Child.new
     #MUST RANDOMLY GENERATE HP, HUNGER, X, AND Y
-    @hp = rand(50..100)
+    @hp = rand(90..100)
     @hunger = rand(1..5)
     @location_x = rand(2)
     @location_y = rand(3)
   end
 
   def create
-    @child = Child.create(child_params)
-    redirect_to @child
+    $globalchild = Child.create(child_params)
+    redirect_to $globalchild
   end
 
   def edit
-    @child = Child.find(params[:id])
+    $globalchild = Child.find(params[:id])
   end
 
   def update
-    @child = Child.find(params[:id])
-    @child.update(child_params)
-    redirect_to @child
+    $globalchild = Child.find(params[:id])
+    $globalchild.update(child_params)
+    redirect_to $globalchild
   end
 
   def destroy
-    @child = Child.find(params[:id])
-    @child.destroy
+    $globalchild = Child.find(params[:id])
+    $globalchild.destroy
     redirect_to children_path
+  end
+
+  def current_child
+    #$globalchild = Child.all[0]
+    @child = Child.find_by(name: params[:name])
+    # byebug
+    if @child
+      $globalchild = @child
+      redirect_to play_path
+    else
+      render :login
+    end
   end
 
   private
@@ -112,9 +133,7 @@ class ChildrenController < ApplicationController
     @bird_attack = [true, false].sample
   end
 
-  def current_child
-    @child = Child.all[0]
-  end
+
 
 
 end
