@@ -67,15 +67,15 @@ class ChildrenController < ApplicationController
   end
 
   def index
-    $globalchildren = Child.all
+    @children = Child.all
   end
 
   def show
-    $globalchild = Child.find(params[:id])
+    @child = Child.find(params[:id])
   end
 
   def new
-    $globalchild = Child.new
+    @child = Child.new
     #MUST RANDOMLY GENERATE HP, HUNGER, X, AND Y
     @hp = rand(90..100)
     @hunger = rand(1..5)
@@ -84,23 +84,23 @@ class ChildrenController < ApplicationController
   end
 
   def create
-    $globalchild = Child.create(child_params)
-    redirect_to $globalchild
+    @child = Child.create(child_params)
+    redirect_to @child
   end
 
   def edit
-    $globalchild = Child.find(params[:id])
+    @child = Child.find(params[:id])
   end
 
   def update
-    $globalchild = Child.find(params[:id])
-    $globalchild.update(child_params)
-    redirect_to $globalchild
+    @child = Child.find(params[:id])
+    @child.update(child_params)
+    redirect_to @child
   end
 
   def destroy
-    $globalchild = Child.find(params[:id])
-    $globalchild.destroy
+    @child = Child.find(params[:id])
+    @child.destroy
     redirect_to children_path
   end
 
