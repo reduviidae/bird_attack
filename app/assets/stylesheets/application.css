@@ -31,3 +31,8 @@ body {
    border-style: dashed;
    height: 100px;
  }
+
+ .nav-links {
+   float: right;
+   margin-left: 20;
+ }

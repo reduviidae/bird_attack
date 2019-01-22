@@ -55,6 +55,24 @@ input[type="submit"] {
   width: 50px;
 }
 
+input[value="Submit Child"] {
+  border: none;
+  background-color: #00CC99;
+  border-radius: 50%;
+  font-family: 'Raleway', sans-serif;
+  height: 40px;
+  width: 80px;
+}
+
+input[value="Start Over"] {
+  border: none;
+  background-color: #C9A0DC;
+  border-radius: 50%;
+  font-family: 'Raleway', sans-serif;
+  height: 40px;
+  width: 70px;
+}
+
 #doctor {
   width: 100px;
   background-color: #AFE313;

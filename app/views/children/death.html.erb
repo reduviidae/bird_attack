@@ -1,2 +1,5 @@
 <h1>You have died.</h1> <br>
 <%= image_tag ("https://upload.wikimedia.org/wikipedia/commons/8/85/Skull_and_Crossbones.png") %> <br>
+<%= form_tag("/start_over") do %>
+  <%= submit_tag("Start Over") %>
+<% end %>

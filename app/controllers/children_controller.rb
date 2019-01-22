@@ -1,5 +1,5 @@
 class ChildrenController < ApplicationController
-  before_action :current_child, only: [:home, :north, :east, :west, :south, :food, :doctor]
+  before_action :current_child, only: [:home, :north, :east, :west, :south, :food, :doctor, :death, :start_over]
   before_action :alive?, only: [:home]
   def home
     doctor_exist?
@@ -34,6 +34,9 @@ class ChildrenController < ApplicationController
   def food
     @food = Food.all.sample
     @child.hunger -= @food.hunger_decrease
+    if @child.hunger < 0
+      @child.hunger = 0
+    end
     @child.save
     redirect_to "/"
   end
@@ -41,6 +44,9 @@ class ChildrenController < ApplicationController
   def doctor
     @doctor = Doctor.all.sample
     @child.hp += @doctor.hp
+    if @child.hp > 100
+      @child.hp = 100
+    end
     @child.save
     redirect_to "/"
   end
@@ -59,6 +65,15 @@ class ChildrenController < ApplicationController
 
   def south
     @child.location_x -= 1
+    @child.save
+    redirect_to "/"
+  end
+
+  def start_over
+    @child.hp = rand(50..100)
+    @child.hunger = rand(1..5)
+    @child.location_x = rand(2)
+    @child.location_y = rand(3)
     @child.save
     redirect_to "/"
   end
