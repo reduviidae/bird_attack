@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_18_212828) do
+ActiveRecord::Schema.define(version: 2019_01_22_213923) do
 
   create_table "attacks", force: :cascade do |t|
-    t.date "date"
     t.integer "child_id"
     t.integer "bird_id"
     t.datetime "created_at", null: false
@@ -30,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_01_18_212828) do
 
   create_table "children", force: :cascade do |t|
     t.string "name"
-    t.string "password"
+    t.string "password_digest"
     t.integer "hp"
     t.integer "hunger"
     t.boolean "sickness", default: false
@@ -43,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_01_18_212828) do
   create_table "doctors", force: :cascade do |t|
     t.integer "location_x"
     t.integer "location_y"
-    t.integer "hp"
+    t.integer "hp_increase"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"

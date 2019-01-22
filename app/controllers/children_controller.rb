@@ -1,11 +1,11 @@
 class ChildrenController < ApplicationController
+  skip_before_action :authorized, only: [:new, :create]
   #before_action :current_child, only: [:home, :north, :east, :west, :south, :food, :doctor]
   $globalchild = nil
 
   def home
     doctor_exist?
     food_exist?
-    byebug
     if bird_attack?
       $globalchild.hp -= rand(5..25)
       $globalchild.save
@@ -104,17 +104,17 @@ class ChildrenController < ApplicationController
     redirect_to children_path
   end
 
-  def current_child
-    #$globalchild = Child.all[0]
-    @child = Child.find_by(name: params[:name])
-    # byebug
-    if @child
-      $globalchild = @child
-      redirect_to play_path
-    else
-      render :login
-    end
-  end
+  # def current_child
+  #   #$globalchild = Child.all[0]
+  #   @child = Child.find_by(name: params[:name])
+  #   # byebug
+  #   if @child
+  #     $globalchild = @child
+  #     redirect_to play_path
+  #   else
+  #     render :login
+  #   end
+  # end
 
   private
   def child_params

@@ -22,4 +22,9 @@ Rails.application.routes.draw do
   post '/south', to: 'children#south'
   post '/food', to: 'children#food'
   post '/doctor', to: 'children#doctor'
+
+
+  get "/signup", to: "children#new", as: "signup"
+  get "/login", to: "sessions#new", as: "login"
+  post "/sessions", to: "sessions#create", as: "sessions"
 end
