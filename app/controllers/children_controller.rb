@@ -7,6 +7,7 @@ class ChildrenController < ApplicationController
     food_exist?
     if bird_attack?
       @bird = Bird.all.sample
+      byebug
       $globalchild.hp -= rand(5..@bird.attack)
       $globalchild.save
       if @bird.sickness
