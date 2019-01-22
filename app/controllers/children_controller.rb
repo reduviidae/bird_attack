@@ -7,9 +7,10 @@ class ChildrenController < ApplicationController
     doctor_exist?
     food_exist?
     if bird_attack?
-      $globalchild.hp -= rand(5..25)
-      $globalchild.save
       @bird = Bird.all.sample
+      byebug
+      $globalchild.hp -= rand(5..@bird.attack)
+      $globalchild.save
       if @bird.sickness
         $globalchild.sickness = true
         $globalchild.save
@@ -18,7 +19,12 @@ class ChildrenController < ApplicationController
 
     $globalchild.hunger += rand(2..10)
     $globalchild.save
-    render :home
+
+    if alive?
+      render :home
+    else
+      render :death
+    end
   end
 
   def north
@@ -30,13 +36,19 @@ class ChildrenController < ApplicationController
   def food
     @food = Food.all.sample
     $globalchild.hunger -= @food.hunger_decrease
+    if $globalchild.hunger < 0
+      $globalchild.hunger = 0
+    end
     $globalchild.save
     redirect_to play_path
   end
 
   def doctor
     @doctor = Doctor.all.sample
-    $globalchild.hp += @doctor.hp_increase
+    $globalchild.hp += @doctor.hp
+    if $globalchild.hp > 100
+      $globalchild.hp = 100
+    end
     $globalchild.save
     redirect_to play_path
   end
@@ -64,6 +76,15 @@ class ChildrenController < ApplicationController
     # render :login
     # $globalchild = current_child
     # redirect_to play_path
+  end
+
+  def start_over
+    $globalchild.hp = rand(50..100)
+    $globalchild.hunger = rand(1..5)
+    $globalchild.location_x = rand(2)
+    $globalchild.location_y = rand(3)
+    $globalchild.save
+    redirect_to "/"
   end
 
   def index
@@ -134,6 +155,14 @@ class ChildrenController < ApplicationController
   end
 
 
+
+  def alive?
+    if $globalchild.hp > 0 && $globalchild.hunger < 100
+      true
+    else
+      false
+    end
+  end
 
 
 end

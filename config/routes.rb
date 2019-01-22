@@ -22,9 +22,13 @@ Rails.application.routes.draw do
   post '/south', to: 'children#south'
   post '/food', to: 'children#food'
   post '/doctor', to: 'children#doctor'
+<<<<<<< HEAD
 
 
   get "/signup", to: "children#new", as: "signup"
   get "/login", to: "sessions#new", as: "login"
   post "/sessions", to: "sessions#create", as: "sessions"
+=======
+  post '/start_over', to: 'children#start_over'
+>>>>>>> 80182d2658160f9a8ff98fb4132dbf5a254e7a89
 end

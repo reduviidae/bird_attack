@@ -1,16 +1,33 @@
-<% if @doctor_exist %>
+<div class="options-container">
+  <% if @doctor_exist %>
 
-<h3>There's a doctor here!</h3><br>
-<%= form_tag('/doctor') do %>
-<%= submit_tag "Get treatment", :id => "doctor"%>
-<% end %>
-<br>
-<% end %>
+  <div class="doctor-label">
+    <h3>There's a doctor here!</h3><br>
+  </div>
+  <div class="doctor-button">
+    <%= form_tag('/doctor') do %>
+    <%= submit_tag "Get treatment", :id => "doctor"%>
+    <% end %>
+    <br>
+    <% end %>
+   </div>
 
-<% if @food_exist %>
-<h3>There's food here!</h3> <br>
-<%= form_tag('/food') do %>
-<%= submit_tag "Eat food", :id => "food" %>
-<% end %>
-<br>
-<% end %>
+
+  <div class="food-label">
+    <% if @food_exist %>
+    <h3>There's food here!</h3> <br>
+      </div>
+  <div class="food-button">
+    <%= form_tag('/food') do %>
+    <%= submit_tag "Eat food", :id => "food" %>
+    <% end %>
+    <br>
+    <% end %>
+  </div>
+
+
+
+
+
+
+</div>
