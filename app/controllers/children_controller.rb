@@ -10,8 +10,6 @@ class ChildrenController < ApplicationController
       $globalchild.hp -= rand(5..25)
       $globalchild.save
       @bird = Bird.all.sample
-      @child.hp -= @bird.attack
-      @child.save
       if @bird.sickness
         $globalchild.sickness = true
         $globalchild.save
