@@ -6,9 +6,9 @@ class ChildrenController < ApplicationController
     food_exist?
 
     if bird_attack?
-      @child.hp -= rand(5..25)
-      @child.save
       @bird = Bird.all.sample
+      @child.hp -= @bird.attack
+      @child.save
       if @bird.sickness
         @child.sickness = true
         @child.save
