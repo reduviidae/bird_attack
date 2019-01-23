@@ -1,5 +1,13 @@
 <div class="grid-container">
 
+  <div id="sick_damage">
+    <% if @current_user.sickness %>
+      <% unless @sickness = nil %>
+        - <%= @sickness %> HP!
+      <% end %>
+    <% end %>
+  </div>
+
 <% if @current_user.location_x < 2 %>
 
   <div id="north"><%= form_tag('/north') do %>

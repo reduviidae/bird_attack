@@ -19,7 +19,8 @@ class ChildrenController < ApplicationController
       end
     end
     if @current_user.sickness
-      @current_user.hp -= 2
+      @sickness = rand(1..5)
+      @current_user.hp -= @sickness
       @current_user.save
     end
     @current_user.hunger += rand(2..10)
@@ -158,11 +159,6 @@ class ChildrenController < ApplicationController
       true
     end
   end
-
-  @duck_url = ["https://media.giphy.com/media/krewXUB6LBja/giphy.gif"].sample
-  @swans_url = ["https://media.giphy.com/media/aWKpZHKmX0onu/giphy.gif"].sample
-  @chicken_url = ["https://thumbs.gfycat.com/SparklingEdibleDog-size_restricted.gif"].sample
-
 
 
 end
