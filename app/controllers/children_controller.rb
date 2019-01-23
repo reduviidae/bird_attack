@@ -1,39 +1,33 @@
 class ChildrenController < ApplicationController
   skip_before_action :authorized, only: [:new, :create]
   before_action :admin?, only: [:index]
-  @current_user = nil
-  $counter = 0
+  #@current_user = nil
 
   def home
-    if $counter > 0
-      byebug
-      doctor_exist?
-      food_exist?
-      if bird_attack?
-        @bird = Bird.all.sample
-        @current_user.hp -= rand(5..@bird.attack)
-        @current_user.save
-        if @bird.sickness
-          @current_user.sickness = [true, false].sample
-          @current_user.save
-        end
-      end
-      if @current_user.sickness
-        @current_user.hp -= 2
-        @current_user.save
-      end
-
-      @current_user.hunger += rand(2..10)
+    doctor_exist?
+    food_exist?
+    if bird_attack?
+      @bird = Bird.all.sample
+      @current_user.hp -= rand(5..@bird.attack)
       @current_user.save
-
-      if alive?
-        render :home
-      else
-        render :death
+      if @bird.sickness
+        @current_user.sickness = [true, false].sample
+        @current_user.save
       end
     end
-    byebug
-    $counter += 1
+    if @current_user.sickness
+      @current_user.hp -= 2
+      @current_user.save
+    end
+
+    @current_user.hunger += rand(2..10)
+    @current_user.save
+
+    if alive?
+      render :home
+    else
+      render :death
+    end
   end
 
   def unauthorized
@@ -57,7 +51,7 @@ class ChildrenController < ApplicationController
 
   def doctor
     @doctor = Doctor.all.sample
-    @current_user.hp += @doctor.hp
+    @current_user.hp += @doctor.hp_increase
     @current_user.sickness = false
     if @current_user.hp > 100
       @current_user.hp = 100

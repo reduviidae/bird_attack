@@ -1,6 +1,6 @@
 class DoctorsController < ApplicationController
   before_action :admin?
-  
+
   def index
     @doctors = Doctor.all
   end
@@ -14,7 +14,7 @@ class DoctorsController < ApplicationController
     #RANDOMLY GENERATE X AND Y COORDINATES
     @location_x = rand(2)
     @location_y = rand(3)
-    @hp = rand(25..100)
+    @hp = rand(50..100)
   end
 
   def create

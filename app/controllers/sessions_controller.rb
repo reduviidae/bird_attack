@@ -8,11 +8,9 @@ class SessionsController < ApplicationController
 
   def create
     # no strong params cause there is no mass assignment
-
     @child = Child.find_by(name: params[:name])
     if @child && @child.authenticate(params[:password])
       session[:user_id] = @child.id
-    
       redirect_to @child
     else
       redirect_to login_path
