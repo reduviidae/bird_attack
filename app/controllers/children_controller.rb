@@ -159,5 +159,10 @@ class ChildrenController < ApplicationController
     end
   end
 
+  @duck_url = ["https://media.giphy.com/media/krewXUB6LBja/giphy.gif"].sample
+  @swans_url = ["https://media.giphy.com/media/aWKpZHKmX0onu/giphy.gif"].sample
+  @chicken_url = ["https://thumbs.gfycat.com/SparklingEdibleDog-size_restricted.gif"].sample
+
+
 
 end

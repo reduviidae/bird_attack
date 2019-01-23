@@ -23,7 +23,7 @@ body {
 
  .grid-container {
    display: grid;
-   grid-template-columns: repeat(3, 100px);
+   grid-template-columns: repeat(3, 125px);
    grid-template-rows: repeat(4, 100px);
    justify-items: center;
    align-items: center;
@@ -39,10 +39,12 @@ body {
    align-items: center;
  }
 
+.bird-display {
+  display: block;
+  float: right;
+}
  .bird-container {
-   display: block;
   margin-right: 150px;
-   float: right;
  }
 
  .doctor-label {
@@ -82,3 +84,17 @@ nav {
  footer {
    background-image: url("https://s3.amazonaws.com/spoonflower/public/design_thumbnails/0464/6979/rrr12x12_Pixel_Block_Solid_Grass_PRINT_FILE_shop_preview.png");
  }
+
+input[value=true] {
+  color: #FD0E35;
+  border: 2px solid red;
+ }
+
+ input:in-range {
+  color: black;
+}
+
+input:out-of-range {
+  color: #FD0E35;
+  border: 2px solid red;
+}
