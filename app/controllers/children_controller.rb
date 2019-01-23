@@ -31,8 +31,6 @@ class ChildrenController < ApplicationController
     end
   end
 
-
-
   def unauthorized
   end
 
@@ -56,6 +54,17 @@ class ChildrenController < ApplicationController
     @current_user.save
     redirect_to play_path
   end
+
+  def start_over
+    @current_user.hp = rand(50..100)
+    @current_user.hunger = rand(1..5)
+    @current_user.location_x = rand(2)
+    @current_user.location_y = rand(3)
+    @current_user.save
+    redirect_to @current_user
+  end
+
+  #Directionals ------------------------------------
 
   def north
     @current_user.location_x += 1
@@ -81,21 +90,9 @@ class ChildrenController < ApplicationController
     game_mechanics
   end
 
-  # def login
-    # @current_user = Child.new
-    # render :login
-    # @current_user = current_child
-    # redirect_to play_path
-  # end
+  #------------------------------------------------------
 
-  def start_over
-    @current_user.hp = rand(50..100)
-    @current_user.hunger = rand(1..5)
-    @current_user.location_x = rand(2)
-    @current_user.location_y = rand(3)
-    @current_user.save
-    redirect_to @current_user
-  end
+  #Restful Routes ---------------------------------------
 
   def index
       @children = Child.all
@@ -135,17 +132,7 @@ class ChildrenController < ApplicationController
     redirect_to children_path
   end
 
-  # def current_child
-  #   #@current_user = Child.all[0]
-  #   @child = Child.find_by(name: params[:name])
-  #   # byebug
-  #   if @child
-  #     @current_user = @child
-  #     redirect_to play_path
-  #   else
-  #     render :login
-  #   end
-  # end
+ #----------------------------------------------
 
   private
   def child_params
@@ -163,8 +150,6 @@ class ChildrenController < ApplicationController
   def bird_attack?
     @bird_attack = [true, false].sample
   end
-
-
 
   def alive?
     if @current_user.hp <= 0 || @current_user.hunger >= 100

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  #-------------------------Restful Routes-------------------------------#
   resources :attacks, only: [:index, :show, :new, :create, :edit, :update]
   delete '/attacks/:id/delete', to: 'attacks#destroy', as: 'destroy_attack'
   resources :birds, only: [:index, :show, :new, :create, :edit, :update]
@@ -10,12 +11,9 @@ Rails.application.routes.draw do
   delete '/foods/:id/delete', to: 'foods#destroy', as: 'destroy_food'
   resources :children, only: [:index, :show, :new, :create, :edit, :update]
   delete '/children/:id/delete', to: 'children#destroy', as: 'destroy_children'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  # get '/', to: 'children#login'
-  # post '/', to:'children#current_child', as: 'find_child'
+  #------------------------Custom Routes---------------------------------#
   get '/play', to:'children#home', as: 'play'
-  #get '/', to: 'children#home', as: 'home'
   post '/north', to: 'children#north'
   post '/east', to: 'children#east'
   post '/west', to: 'children#west'
@@ -23,11 +21,9 @@ Rails.application.routes.draw do
   post '/food', to: 'children#food'
   post '/doctor', to: 'children#doctor'
 
-
-  # get "/signup", to: "children#new", as: "signup"
+  #----------------------Authentication & Sessions------------------------#
   get "/", to: "sessions#new", as: "login"
   post "/", to: "sessions#create", as: "sessions"
-
   post '/start_over', to: 'children#start_over'
 
   get '/unauthorized', to: 'children#unauthorized'
