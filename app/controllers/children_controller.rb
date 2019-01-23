@@ -158,7 +158,7 @@ class ChildrenController < ApplicationController
   end
 
   def bird_attack?
-    @bird_attack = [true, false].sample
+    @bird_attack = [true, false, false, true, true].sample
   end
 
   def alive?

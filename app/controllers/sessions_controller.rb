@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
       redirect_to @child
     else
       redirect_to login_path
+      flash[:danger] = "You have entered incorrect credentials"
     end
   end
 end
