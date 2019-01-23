@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_01_23_141644) do
   create_table "doctors", force: :cascade do |t|
     t.integer "location_x"
     t.integer "location_y"
-    t.integer "hp"
+    t.integer "hp_increase"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"

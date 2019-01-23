@@ -26,11 +26,11 @@ food3 = Food.create(name: "Cheese", location_x: 2, location_y: 3, hunger_decreas
 food4 = Food.create(name: "Fruit", location_x: 2, location_y: 2, hunger_decrease: rand(1..20))
 food5 = Food.create(name: "Soda", location_x: 3, location_y: 1, hunger_decrease: rand(1..20))
 
-doctor1 = Doctor.create(name: "Dr. Bob", location_x: 2, location_y: 1, hp: rand(10..30))
-doctor2 = Doctor.create(name: "Dr. Dr.", location_x: 1, location_y: 1, hp: rand(10..30))
-doctor3 = Doctor.create(name: "Dr. Pepper", location_x: 2, location_y: 3, hp: rand(10..30))
-doctor4 = Doctor.create(name: "Dr. My Guy", location_x: 1, location_y: 3, hp: rand(10..30))
-doctor5 = Doctor.create(name: "Dr. Duckmans", location_x: 1, location_y: 2, hp: rand(10..30))
+doctor1 = Doctor.create(name: "Dr. Bob", location_x: 2, location_y: 1, hp_increase: rand(10..30))
+doctor2 = Doctor.create(name: "Dr. Dr.", location_x: 1, location_y: 1, hp_increase: rand(10..30))
+doctor3 = Doctor.create(name: "Dr. Pepper", location_x: 2, location_y: 3, hp_increase: rand(10..30))
+doctor4 = Doctor.create(name: "Dr. My Guy", location_x: 1, location_y: 3, hp_increase: rand(10..30))
+doctor5 = Doctor.create(name: "Dr. Duckmans", location_x: 1, location_y: 2, hp_increase: rand(10..30))
 
 bird1 = Bird.create(species: "Duck", sickness: false, attack:10)
 bird2 = Bird.create(species: "Pigeon", sickness: true, attack:50)
