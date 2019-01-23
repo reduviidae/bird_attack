@@ -1,4 +1,5 @@
 class AttacksController < ApplicationController
+  before_action :admin?
 
   def index
     @attacks = Attack.all

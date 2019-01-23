@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_22_213923) do
+ActiveRecord::Schema.define(version: 2019_01_23_141644) do
 
   create_table "attacks", force: :cascade do |t|
     t.integer "child_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_01_22_213923) do
     t.integer "location_y"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
   end
 
   create_table "doctors", force: :cascade do |t|

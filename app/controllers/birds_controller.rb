@@ -1,5 +1,6 @@
 class BirdsController < ApplicationController
-
+  before_action :admin?
+  
   def index
     @birds = Bird.all
   end

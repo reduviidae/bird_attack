@@ -1,9 +1,10 @@
 class ChildrenController < ApplicationController
   skip_before_action :authorized, only: [:new, :create]
-  #before_action :current_child, only: [:home, :north, :east, :west, :south, :food, :doctor]
+  before_action :admin?, only: [:index]
   @current_user = nil
 
   def home
+
     doctor_exist?
     food_exist?
     if bird_attack?
@@ -28,6 +29,9 @@ class ChildrenController < ApplicationController
     else
       render :death
     end
+  end
+
+  def unauthorized
   end
 
   def north
@@ -75,12 +79,12 @@ class ChildrenController < ApplicationController
     redirect_to play_path
   end
 
-  def login
+  # def login
     # @current_user = Child.new
     # render :login
     # @current_user = current_child
     # redirect_to play_path
-  end
+  # end
 
   def start_over
     @current_user.hp = rand(50..100)
@@ -88,11 +92,11 @@ class ChildrenController < ApplicationController
     @current_user.location_x = rand(2)
     @current_user.location_y = rand(3)
     @current_user.save
-    redirect_to "/"
+    redirect_to @current_user
   end
 
   def index
-    @children = Child.all
+      @children = Child.all
   end
 
   def show
@@ -129,17 +133,17 @@ class ChildrenController < ApplicationController
     redirect_to children_path
   end
 
-  def current_child
-    #@current_user = Child.all[0]
-    @child = Child.find_by(name: params[:name])
-    # byebug
-    if @child
-      @current_user = @child
-      redirect_to play_path
-    else
-      render :login
-    end
-  end
+  # def current_child
+  #   #@current_user = Child.all[0]
+  #   @child = Child.find_by(name: params[:name])
+  #   # byebug
+  #   if @child
+  #     @current_user = @child
+  #     redirect_to play_path
+  #   else
+  #     render :login
+  #   end
+  # end
 
   private
   def child_params

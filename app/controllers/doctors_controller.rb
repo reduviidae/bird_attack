@@ -1,5 +1,6 @@
 class DoctorsController < ApplicationController
-
+  before_action :admin?
+  
   def index
     @doctors = Doctor.all
   end

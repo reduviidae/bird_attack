@@ -13,7 +13,7 @@ Bird.destroy_all
 Attack.destroy_all
 
 
-child1 = Child.create(name: "Kenny", password: "password", hp:100, hunger: 100, location_x: 1, location_y: 1 )
+child1 = Child.create(name: "Kenny", password: "password", hp:100, hunger: 100, location_x: 1, location_y: 1, admin: true )
 child2 = Child.create(name: "Wil", password: "password", hp:100, hunger: 100, location_x: 1, location_y: 2 )
 child3 = Child.create(name: "Peter", password: "password", hp:100, hunger: 100, location_x: 1, location_y: 3 )
 child4 = Child.create(name: "John", password: "password", hp:100, hunger: 100, location_x: 2, location_y: 3 )

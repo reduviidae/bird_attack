@@ -1,5 +1,6 @@
 class FoodsController < ApplicationController
-
+  before_action :admin?
+  
   def index
     @foods = Food.all
   end

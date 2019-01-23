@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   delete '/children/:id/delete', to: 'children#destroy', as: 'destroy_children'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get '/', to: 'children#login'
-  post '/', to:'children#current_child', as: 'find_child'
+  # get '/', to: 'children#login'
+  # post '/', to:'children#current_child', as: 'find_child'
   get '/play', to:'children#home', as: 'play'
   #get '/', to: 'children#home', as: 'home'
   post '/north', to: 'children#north'
@@ -24,10 +24,12 @@ Rails.application.routes.draw do
   post '/doctor', to: 'children#doctor'
 
 
-  get "/signup", to: "children#new", as: "signup"
-  get "/login", to: "sessions#new", as: "login"
-  post "/sessions", to: "sessions#create", as: "sessions"
+  # get "/signup", to: "children#new", as: "signup"
+  get "/", to: "sessions#new", as: "login"
+  post "/", to: "sessions#create", as: "sessions"
 
   post '/start_over', to: 'children#start_over'
+
+  get '/unauthorized', to: 'children#unauthorized'
 
 end

@@ -9,4 +9,17 @@
 <br/>
 <%= link_to "Edit Child Details", edit_child_path%>
 <br/>
-<%= link_to "Delete Child", destroy_children_path, method: :delete %>
+<%= link_to "Delete Child Account", destroy_children_path, method: :delete %>
+<br>
+<%= link_to "Start Over", "/start_over", method: :post %>
+<br>
+<%= link_to "Play Game", play_path %>
+<br>
+<br>
+<% if @current_user.admin %>
+  <%= link_to "See Birds", birds_path %> <br>
+  <%= link_to "See Doctors", doctors_path %> <br>
+  <%= link_to "See Food", foods_path %> <br>
+  <%= link_to "See Attacks", attacks_path %> <br>
+  <%= link_to "See Children", children_path %> <br>
+<% end %>
