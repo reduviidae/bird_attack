@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authorized
   helper_method :logged_in?
+  
 
   def authorized
     unless logged_in?

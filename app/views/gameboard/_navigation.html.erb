@@ -1,6 +1,6 @@
 <div class="grid-container">
 
-<% if $globalchild.location_x < 2 %>
+<% if @current_user.location_x < 2 %>
 
   <div id="north"><%= form_tag('/north') do %>
     <%= submit_tag "North" %>
@@ -8,7 +8,7 @@
   </div>
 <% end %>
 
-<% if $globalchild.location_y > 0 %>
+<% if @current_user.location_y > 0 %>
   <div id="east"><%= form_tag('/east') do %>
     <%= submit_tag "East" %>
   <% end %>
@@ -19,14 +19,14 @@
   <iframe src="https://giphy.com/embed/xUOrvW5lZpuaNJgpVu" width="42" height="60" frameBorder="0"></iframe>
 </div>
 
-<% if $globalchild.location_y < 3 %>
+<% if @current_user.location_y < 3 %>
   <div id="west"><%= form_tag('/west') do %>
     <%= submit_tag "West" %>
   <% end %>
   </div>
 <% end %>
 
-<% if $globalchild.location_x > 0 %>
+<% if @current_user.location_x > 0 %>
   <div id="south"><%= form_tag('/south') do %>
     <%= submit_tag "South" %>
   <% end %>
@@ -35,17 +35,17 @@
 
 <div id="hp">
   <h3>Hitpoints:</h3>
-  <h4><%= $globalchild.hp %></h4>
+  <h4><%= @current_user.hp %></h4>
 </div>
 
 <div id="hunger">
   <h3>Hunger:</h3>
-  <h4><%= $globalchild.hunger %></h4>
+  <h4><%= @current_user.hunger %></h4>
 </div>
 
 <div id="sickness">
   <h3>Sickness:</h3>
-  <h4><%= $globalchild.sickness %></h4>
+  <h4><%= @current_user.sickness %></h4>
 </div>
 
 </div>

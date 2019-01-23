@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 
   def create
     # no strong params cause there is no mass assignment
+    byebug
     @child = Child.find_by(name: params[:name])
     if @child && @child.authenticate(params[:password])
       session[:user_id] = @child.id

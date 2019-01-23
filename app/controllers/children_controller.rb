@@ -1,24 +1,27 @@
 class ChildrenController < ApplicationController
   skip_before_action :authorized, only: [:new, :create]
   #before_action :current_child, only: [:home, :north, :east, :west, :south, :food, :doctor]
-  $globalchild = nil
+  @current_user = nil
 
   def home
     doctor_exist?
     food_exist?
     if bird_attack?
       @bird = Bird.all.sample
-      byebug
-      $globalchild.hp -= rand(5..@bird.attack)
-      $globalchild.save
+      @current_user.hp -= rand(5..@bird.attack)
+      @current_user.save
       if @bird.sickness
-        $globalchild.sickness = true
-        $globalchild.save
+        @current_user.sickness = true
+        @current_user.save
       end
     end
+    if @current_user.sickness
+      @current_user.hp -= 2
+      @current_user.save
+    end
 
-    $globalchild.hunger += rand(2..10)
-    $globalchild.save
+    @current_user.hunger += rand(2..10)
+    @current_user.save
 
     if alive?
       render :home
@@ -28,62 +31,63 @@ class ChildrenController < ApplicationController
   end
 
   def north
-    $globalchild.location_x += 1
-    $globalchild.save
+    @current_user.location_x += 1
+    @current_user.save
     redirect_to play_path
   end
 
   def food
     @food = Food.all.sample
-    $globalchild.hunger -= @food.hunger_decrease
-    if $globalchild.hunger < 0
-      $globalchild.hunger = 0
+    @current_user.hunger -= @food.hunger_decrease
+    if @current_user.hunger < 0
+      @current_user.hunger = 0
     end
-    $globalchild.save
+    @current_user.save
     redirect_to play_path
   end
 
   def doctor
     @doctor = Doctor.all.sample
-    $globalchild.hp += @doctor.hp
-    if $globalchild.hp > 100
-      $globalchild.hp = 100
+    @current_user.hp += @doctor.hp
+    @current_user.sickness = false
+    if @current_user.hp > 100
+      @current_user.hp = 100
     end
-    $globalchild.save
+    @current_user.save
     redirect_to play_path
   end
 
   def east
-    $globalchild.location_y -= 1
-    $globalchild.save
+    @current_user.location_y -= 1
+    @current_user.save
     redirect_to play_path
   end
 
   def west
-    $globalchild.location_y += 1
-    $globalchild.save
+    @current_user.location_y += 1
+    @current_user.save
     redirect_to play_path
   end
 
   def south
-    $globalchild.location_x -= 1
-    $globalchild.save
+    @current_user.location_x -= 1
+    @current_user.save
     redirect_to play_path
   end
 
   def login
-    # $globalchild = Child.new
+    # @current_user = Child.new
     # render :login
-    # $globalchild = current_child
+    # @current_user = current_child
     # redirect_to play_path
   end
 
   def start_over
-    $globalchild.hp = rand(50..100)
-    $globalchild.hunger = rand(1..5)
-    $globalchild.location_x = rand(2)
-    $globalchild.location_y = rand(3)
-    $globalchild.save
+    @current_user.hp = rand(50..100)
+    @current_user.hunger = rand(1..5)
+    @current_user.location_x = rand(2)
+    @current_user.location_y = rand(3)
+    @current_user.save
     redirect_to "/"
   end
 
@@ -125,17 +129,17 @@ class ChildrenController < ApplicationController
     redirect_to children_path
   end
 
-  # def current_child
-  #   #$globalchild = Child.all[0]
-  #   @child = Child.find_by(name: params[:name])
-  #   # byebug
-  #   if @child
-  #     $globalchild = @child
-  #     redirect_to play_path
-  #   else
-  #     render :login
-  #   end
-  # end
+  def current_child
+    #@current_user = Child.all[0]
+    @child = Child.find_by(name: params[:name])
+    # byebug
+    if @child
+      @current_user = @child
+      redirect_to play_path
+    else
+      render :login
+    end
+  end
 
   private
   def child_params
@@ -157,7 +161,7 @@ class ChildrenController < ApplicationController
 
 
   def alive?
-    if $globalchild.hp > 0 && $globalchild.hunger < 100
+    if @current_user.hp > 0 && @current_user.hunger < 100
       true
     else
       false
