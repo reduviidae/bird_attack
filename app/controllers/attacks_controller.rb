@@ -40,7 +40,7 @@ class AttacksController < ApplicationController
 
   private
   def attack_params
-    params.require(:attack).permit(:date, :child_id, :bird_id, :)
+    params.require(:attack).permit(:child_id, :bird_id)
   end
 
 
