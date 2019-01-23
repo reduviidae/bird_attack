@@ -2,8 +2,11 @@
 
   <div id="sick_damage">
     <% if @current_user.sickness %>
-      <% unless @sickness = nil %>
+      <% unless @sickness == nil %>
         - <%= @sickness %> HP!
+      <% else %>
+      <% @sickness = 0 %>
+      - <%= @sickness %> HP!
       <% end %>
     <% end %>
   </div>

@@ -7,12 +7,20 @@ class ChildrenController < ApplicationController
   end
 
   def game_mechanics
+    @kb = false
     doctor_exist?
     food_exist?
     if bird_attack?
       @bird = Bird.all.sample
-      @current_user.hp -= rand(5..@bird.attack)
+      @bird_damage = rand(5..@bird.attack)
+      @current_user.hp -= @bird_damage
       @current_user.save
+      if @bird_damage >= @current_user.hp
+        @kb = true
+      else
+        @kb = false
+      end
+      @current_attack = Attack.create(bird_id: @bird.id, child_id: @current_user.id, damage_done: @bird_damage)
         if @bird.sickness
           @current_user.sickness = [true, false].sample
           @current_user.save
@@ -62,6 +70,7 @@ class ChildrenController < ApplicationController
     @current_user.location_x = rand(2)
     @current_user.location_y = rand(3)
     @current_user.save
+    @kb = false
     redirect_to @current_user
   end
 
@@ -160,9 +169,6 @@ class ChildrenController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
 
-=======
->>>>>>> dc9f16c43b13a08cd872336147a72cf503786938
 
 end
