@@ -1,5 +1,9 @@
-<% if @bird_attack %>
-  <%= render "/gameboard/bird_attack" %>
-<% end %>
-<%= render "/gameboard/options" %>
-<%= render "/gameboard/navigation" %>
+<div class="bird-display">
+  <% if @bird_attack %>
+    <%= render "/gameboard/bird_attack" %>
+  <% end %>
+</div>
+<div class="player-display">
+  <%= render "/gameboard/options" %>
+  <%= render "/gameboard/navigation" %>
+</div>

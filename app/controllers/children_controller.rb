@@ -11,7 +11,7 @@ class ChildrenController < ApplicationController
       @current_user.hp -= rand(5..@bird.attack)
       @current_user.save
       if @bird.sickness
-        @current_user.sickness = true
+        @current_user.sickness = [true, false].sample
         @current_user.save
       end
     end
