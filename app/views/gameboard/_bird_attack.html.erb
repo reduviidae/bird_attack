@@ -2,24 +2,37 @@
 <% if @current_user.sickness %>
   <h1>You've been infected!</h1>
 <% end %>
+<% duck_path = ["https://media.giphy.com/media/krewXUB6LBja/giphy.gif", "https://media.giphy.com/media/5fCAGvA3uKj4I/giphy.gif"].sample %>
+<% swans_path = ["https://media.giphy.com/media/aWKpZHKmX0onu/giphy.gif"].sample %>
+<% chicken_path = ["https://thumbs.gfycat.com/SparklingEdibleDog-size_restricted.gif"].sample %>
+<% pigeon_path = ["http://4.bp.blogspot.com/-P-4GekKZu-o/UovIRMJuIhI/AAAAAAAAAYc/1zsw-WmIfYg/s1600/Big-Pigeon-Attack.gif"].sample %>
+<% cow_path = ["http://gifgifmagazine.com/wp-content/uploads/2017/01/gz9Cm.gif"].sample %>
+<% albatross_path = ["https://i.imgur.com/NexN5Oe.gif"].sample %>
+<% seagull_path = ["https://i.chzbgr.com/full/6324953344/h9BF7D539/"].sample %>
+<% finch_path = ["https://66.media.tumblr.com/tumblr_lxfsgx5gfz1r2wrwho2_250.gif"].sample %>
+<% sparrow_path = ["https://thumbs.gfycat.com/PowerlessCourteousAmericanlobster-size_restricted.gif"].sample %>
+<% goose_path = ["http://i.imgur.com/4xe4ArT.gifv"].sample  %>
+
 
   <% case @bird.species %>
   <% when "Duck" %>
-    <%= image_tag("https://media.giphy.com/media/krewXUB6LBja/giphy.gif") %>
-  <% when "Swans" %>
-    <%= image_tag("https://media.giphy.com/media/aWKpZHKmX0onu/giphy.gif") %>
+    <%= image_tag(duck_path) %>
+  <% when "Swan" %>
+    <%= image_tag(swans_path) %>
   <% when "Chicken" %>
-    <%= image_tag("https://thumbs.gfycat.com/SparklingEdibleDog-size_restricted.gif") %>
+    <%= image_tag(chicken_path) %>
   <% when "Pigeon" %>
-    <%= image_tag("http://4.bp.blogspot.com/-P-4GekKZu-o/UovIRMJuIhI/AAAAAAAAAYc/1zsw-WmIfYg/s1600/Big-Pigeon-Attack.gif") %>
+    <%= image_tag(pigeon_path) %>
   <% when "Cow" %>
-    <%= image_tag("http://gifgifmagazine.com/wp-content/uploads/2017/01/gz9Cm.gif") %>
+    <%= image_tag(cow_path) %>
   <% when "Albatross" %>
-    <%= image_tag("https://i.imgur.com/NexN5Oe.gif") %>
+    <%= image_tag(albatross_path) %>
   <% when "Seagull" %>
-    <%= image_tag("http://i.imgur.com/yn2XDlh.gifv") %>
+    <%= image_tag(seagull_path) %>
   <% when "Finch" %>
-    <%= image_tag("") %>
+    <%= image_tag(finch_path) %>
   <% when "Sparrow" %>
+    <%= image_tag(sparrow_path) %>
   <% when "Goose" %>
+    <%= image_tag(goose_path) %>
   <% end %>
