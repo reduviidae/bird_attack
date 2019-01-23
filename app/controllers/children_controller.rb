@@ -2,33 +2,38 @@ class ChildrenController < ApplicationController
   skip_before_action :authorized, only: [:new, :create]
   before_action :admin?, only: [:index]
   @current_user = nil
+  $counter = 0
 
   def home
-
-    doctor_exist?
-    food_exist?
-    if bird_attack?
-      @bird = Bird.all.sample
-      @current_user.hp -= rand(5..@bird.attack)
-      @current_user.save
-      if @bird.sickness
-        @current_user.sickness = [true, false].sample
+    if $counter > 0
+      byebug
+      doctor_exist?
+      food_exist?
+      if bird_attack?
+        @bird = Bird.all.sample
+        @current_user.hp -= rand(5..@bird.attack)
+        @current_user.save
+        if @bird.sickness
+          @current_user.sickness = [true, false].sample
+          @current_user.save
+        end
+      end
+      if @current_user.sickness
+        @current_user.hp -= 2
         @current_user.save
       end
-    end
-    if @current_user.sickness
-      @current_user.hp -= 2
+
+      @current_user.hunger += rand(2..10)
       @current_user.save
-    end
 
-    @current_user.hunger += rand(2..10)
-    @current_user.save
-
-    if alive?
-      render :home
-    else
-      render :death
+      if alive?
+        render :home
+      else
+        render :death
+      end
     end
+    byebug
+    $counter += 1
   end
 
   def unauthorized

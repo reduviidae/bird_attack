@@ -24,8 +24,4 @@ class ApplicationController < ActionController::Base
       @current_user = Child.find(session[:user_id])
     end
   end
-
-  def unauthorized
-  end
-  
 end
