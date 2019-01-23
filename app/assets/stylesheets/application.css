@@ -69,9 +69,16 @@ body {
 
 nav {
   margin: 20px;
+  background-color: #76D7EA;
+  padding: 0px, 2px, 0px, 2px;
+  text-align: right;
 }
 
  .nav-links {
    float: right;
    margin-left: 20;
+ }
+
+ footer {
+   background-image: url("https://s3.amazonaws.com/spoonflower/public/design_thumbnails/0464/6979/rrr12x12_Pixel_Block_Solid_Grass_PRINT_FILE_shop_preview.png");
  }
