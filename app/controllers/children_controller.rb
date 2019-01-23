@@ -6,6 +6,15 @@ class ChildrenController < ApplicationController
   def home
     doctor_exist?
     food_exist?
+    if @current_user.sickness
+      @current_user.hp -= 2
+      @current_user.save
+    end
+    @current_user.hunger += rand(2..10)
+    @current_user.save
+  end
+
+  def check_attack
     if bird_attack?
       @bird = Bird.all.sample
       @current_user.hp -= rand(5..@bird.attack)
@@ -15,14 +24,6 @@ class ChildrenController < ApplicationController
         @current_user.save
       end
     end
-    if @current_user.sickness
-      @current_user.hp -= 2
-      @current_user.save
-    end
-
-    @current_user.hunger += rand(2..10)
-    @current_user.save
-
     if alive?
       render :home
     else
@@ -30,13 +31,9 @@ class ChildrenController < ApplicationController
     end
   end
 
-  def unauthorized
-  end
 
-  def north
-    @current_user.location_x += 1
-    @current_user.save
-    redirect_to play_path
+
+  def unauthorized
   end
 
   def food
@@ -60,22 +57,28 @@ class ChildrenController < ApplicationController
     redirect_to play_path
   end
 
+  def north
+    @current_user.location_x += 1
+    @current_user.save
+    check_attack
+  end
+
   def east
     @current_user.location_y -= 1
     @current_user.save
-    redirect_to play_path
+    check_attack
   end
 
   def west
     @current_user.location_y += 1
     @current_user.save
-    redirect_to play_path
+    check_attack
   end
 
   def south
     @current_user.location_x -= 1
     @current_user.save
-    redirect_to play_path
+    check_attack
   end
 
   # def login
