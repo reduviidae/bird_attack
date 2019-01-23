@@ -4,17 +4,11 @@ class ChildrenController < ApplicationController
   #@current_user = nil
 
   def home
-    doctor_exist?
-    food_exist?
-    if @current_user.sickness
-      @current_user.hp -= 2
-      @current_user.save
-    end
-    @current_user.hunger += rand(2..10)
-    @current_user.save
   end
 
-  def check_attack
+  def game_mechanics
+    doctor_exist?
+    food_exist?
     if bird_attack?
       @bird = Bird.all.sample
       @current_user.hp -= rand(5..@bird.attack)
@@ -24,8 +18,14 @@ class ChildrenController < ApplicationController
         @current_user.save
       end
     end
+    if @current_user.sickness
+      @current_user.hp -= 2
+      @current_user.save
+    end
+    @current_user.hunger += rand(2..10)
+    @current_user.save
     if alive?
-      redirect_to play_path
+      render :home
     else
       render :death
     end
@@ -60,25 +60,25 @@ class ChildrenController < ApplicationController
   def north
     @current_user.location_x += 1
     @current_user.save
-    check_attack
+    game_mechanics
   end
 
   def east
     @current_user.location_y -= 1
     @current_user.save
-    check_attack
+    game_mechanics
   end
 
   def west
     @current_user.location_y += 1
     @current_user.save
-    check_attack
+    game_mechanics
   end
 
   def south
     @current_user.location_x -= 1
     @current_user.save
-    check_attack
+    game_mechanics
   end
 
   # def login
@@ -167,10 +167,10 @@ class ChildrenController < ApplicationController
 
 
   def alive?
-    if @current_user.hp > 0 && @current_user.hunger < 100
-      true
-    else
+    if @current_user.hp <= 0 || @current_user.hunger >= 100
       false
+    else
+      true
     end
   end
 
