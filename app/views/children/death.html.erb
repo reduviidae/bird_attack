@@ -1,4 +1,9 @@
 <h1>You have died.</h1> <br>
+<% if @current_user.hp <= 0 %>
+<h2>You have been killed by a <%= @bird.species %>.</h2>
+<% else %>
+<h2>You have died of hunger.</h2>
+<% end %>
 <%= image_tag ("https://upload.wikimedia.org/wikipedia/commons/8/85/Skull_and_Crossbones.png"), size: "300x250" %> <br>
 <%= form_tag("/start_over") do %>
   <%= submit_tag("Start Over") %>

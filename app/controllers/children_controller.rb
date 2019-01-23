@@ -25,7 +25,7 @@ class ChildrenController < ApplicationController
       end
     end
     if alive?
-      render :home
+      redirect_to play_path
     else
       render :death
     end
