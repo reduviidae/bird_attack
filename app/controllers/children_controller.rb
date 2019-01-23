@@ -160,6 +160,9 @@ class ChildrenController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dc9f16c43b13a08cd872336147a72cf503786938
 
 end

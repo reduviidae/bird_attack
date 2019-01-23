@@ -29,6 +29,11 @@ body {
    align-items: center;
  }
 
+ #sick_damage {
+  grid-column-start: 3;
+  grid-row-start: 1;
+ }
+
 
  .options-container {
    display: grid;
