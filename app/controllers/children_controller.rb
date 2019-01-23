@@ -140,11 +140,11 @@ class ChildrenController < ApplicationController
   end
 
   def doctor_exist?
-    @doctor_exist = [true, false, false, false].sample
+    @doctor_exist = [true, false, false, false, true, false].sample
   end
 
   def food_exist?
-    @food_exist = [true, false, false].sample
+    @food_exist = [true, false, false, false].sample
   end
 
   def bird_attack?
