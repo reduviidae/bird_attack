@@ -122,8 +122,14 @@ class ChildrenController < ApplicationController
   end
 
   def create
+
     @child = Child.create(child_params)
-    redirect_to @child
+    if @child.valid?
+      redirect_to '/'
+    else
+      flash[:error] = @child.errors.full_messages
+      render :new
+    end
   end
 
   def edit
