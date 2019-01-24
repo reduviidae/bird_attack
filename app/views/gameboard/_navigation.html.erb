@@ -3,10 +3,15 @@
   <div id="sick_damage">
     <% if @current_user.sickness %>
       <% unless @sickness == nil %>
-        - <%= @sickness %> HP!
-      <% else %>
-      <% @sickness = 0 %>
-      - <%= @sickness %> HP!
+        - <%= @sickness %> HP from Sickness!
+      <% end %>
+    <% end %>
+  </div>
+
+  <div id="bird_attack_damage">
+    <% if @current_user.sickness %>
+      <% unless @bird_damage == nil %>
+        - <%= @bird_damage %> HP from Bird!
       <% end %>
     <% end %>
   </div>
