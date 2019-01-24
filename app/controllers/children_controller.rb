@@ -1,6 +1,8 @@
 class ChildrenController < ApplicationController
   skip_before_action :authorized, only: [:new, :create]
   before_action :admin?, only: [:index]
+  before_action :reset_hp_cookies, only: [:north, :south, :east, :west, :food]
+  before_action :reset_hunger_cookies, only: [:north, :south, :east, :west, :doctor]
   #@current_user = nil
 
   def home
@@ -21,7 +23,7 @@ class ChildrenController < ApplicationController
         @kb = false
       end
       @current_attack = Attack.create(bird_id: @bird.id, child_id: @current_user.id, damage_done: @bird_damage, killing_blow: @kb)
-        if @bird.sickness
+        if @bird.sickness && !@current_user.sickness
           @current_user.sickness = [true, false].sample
           @current_user.save
         end
@@ -46,6 +48,7 @@ class ChildrenController < ApplicationController
   def food
     @food = Food.all.sample
     @current_user.hunger -= @food.hunger_decrease
+    session[:hunger_decrease] = @food.hunger_decrease
     if @current_user.hunger < 0
       @current_user.hunger = 0
     end
@@ -56,6 +59,7 @@ class ChildrenController < ApplicationController
   def doctor
     @doctor = Doctor.all.sample
     @current_user.hp += @doctor.hp_increase
+    session[:hp_increase] = @doctor.hp_increase
     @current_user.sickness = false
     if @current_user.hp > 100
       @current_user.hp = 100
@@ -174,6 +178,14 @@ class ChildrenController < ApplicationController
     else
       true
     end
+  end
+
+  def reset_hp_cookies
+    session[:hp_increase] = nil
+  end
+
+  def reset_hunger_cookies
+    session[:hunger_decrease] = nil
   end
 
 
