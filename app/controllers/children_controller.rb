@@ -69,6 +69,7 @@ class ChildrenController < ApplicationController
     @current_user.hunger = rand(1..5)
     @current_user.location_x = rand(2)
     @current_user.location_y = rand(3)
+    @current_user.sickness = false
     @current_user.save
     @kb = false
     redirect_to @current_user
