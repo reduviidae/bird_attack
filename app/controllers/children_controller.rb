@@ -65,7 +65,7 @@ class ChildrenController < ApplicationController
   end
 
   def start_over
-    @current_user.hp = rand(50..100)
+    @current_user.hp = rand(90..100)
     @current_user.hunger = rand(1..5)
     @current_user.location_x = rand(2)
     @current_user.location_y = rand(3)
