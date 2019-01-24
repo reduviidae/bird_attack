@@ -3,6 +3,7 @@ class ChildrenController < ApplicationController
   before_action :admin?, only: [:index]
   before_action :reset_hp_cookies, only: [:north, :south, :east, :west, :food]
   before_action :reset_hunger_cookies, only: [:north, :south, :east, :west, :doctor]
+  before_action :reset_infection_cookies, only: [:north, :south, :east, :west, :doctor, :food]
   #@current_user = nil
 
   def home
@@ -26,6 +27,9 @@ class ChildrenController < ApplicationController
         if @bird.sickness && !@current_user.sickness
           @current_user.sickness = [true, false].sample
           @current_user.save
+          if @current_user.sickness
+            session[:infection] = true
+          end
         end
     end
     if @current_user.sickness
@@ -186,6 +190,10 @@ class ChildrenController < ApplicationController
 
   def reset_hunger_cookies
     session[:hunger_decrease] = nil
+  end
+
+  def reset_infection_cookies
+    session[:infection] = false
   end
 
 
