@@ -1,10 +1,12 @@
 <h2>Attack Details</h2>
 
-<%= @attack.created_at%>
+<label>Date/Time of Attack: <%= @attack.created_at%></label>
 <br/>
-<%= link_to @attack.child.name, child_path(@attack.child) %>
+<label>Username: <%= link_to @attack.child.name, child_path(@attack.child) %></label>
 <br/>
-<%= link_to @attack.bird.species, bird_path(@attack.bird) %>
+<label>Bird: <%= link_to @attack.bird.species, bird_path(@attack.bird) %></label>
+<br/>
+<label>Killing Blow?: <%= @attack.killing_blow%> </label>
 <br/>
 <br/>
 <%= link_to "Edit Attack Details", edit_attack_path%>

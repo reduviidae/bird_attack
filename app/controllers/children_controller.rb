@@ -20,7 +20,7 @@ class ChildrenController < ApplicationController
       else
         @kb = false
       end
-      @current_attack = Attack.create(bird_id: @bird.id, child_id: @current_user.id, damage_done: @bird_damage)
+      @current_attack = Attack.create(bird_id: @bird.id, child_id: @current_user.id, damage_done: @bird_damage, killing_blow: @kb)
         if @bird.sickness
           @current_user.sickness = [true, false].sample
           @current_user.save
