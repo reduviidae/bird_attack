@@ -9,11 +9,9 @@
   </div>
 
   <div id="bird_attack_damage">
-    <% if @current_user.sickness %>
       <% unless @bird_damage == nil %>
         - <%= @bird_damage %> HP from Bird!
       <% end %>
-    <% end %>
   </div>
 
 <% if @current_user.location_x < 2 %>
@@ -51,17 +49,31 @@
 
 <div id="hp" value=<%= @current_user.hp %> >
   <h3>Hitpoints:</h3>
-  <input name="hp" type="number" placeholder="0 to 100" min="51" max="100" value=<%= @current_user.hp %>>
+  <input name="hp" type="number" placeholder="0 to 100" min="51" max="100" value=<%= @current_user.hp %>> <br>
+  <br>
+  <div class="health_notice">
+    <% unless session[:hp_increase] == nil %>
+      <%= session[:hp_increase] %> hit points healed!
+  <% end %>
+  </div>
 </div>
 <br>
 <div id="hunger">
   <h3>Hunger:</h3>
-  <input name="hunger" type="number" placeholder="0 to 100" min="0" max="50" value=<%= @current_user.hunger %>>
+  <input name="hunger" type="number" placeholder="0 to 100" min="0" max="50" value=<%= @current_user.hunger %>><br>
+  <br>
+  <div class="health_notice">
+    <% unless session[:hunger_decrease] == nil %>
+      <%= session[:hunger_decrease] %> points less hungry!
+  <% end %>
+  </div>
 </div>
 <br>
 <div id="sickness">
   <h3>Sickness:</h3>
   <input name="sickness" type="text" value=<%= @current_user.sickness %>>
+  <br>
+  <br>
 </div>
 
 </div>

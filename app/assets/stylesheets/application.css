@@ -34,6 +34,22 @@ body {
   grid-row-start: 1;
  }
 
+ #bird_attack_damage {
+  grid-column-start: 1;
+  grid-row-start: 1;
+ }
+
+ #sick_damage, #bird_attack_damage {
+   color: #FD0E35;
+   font-weight: bold;
+   font-size: 0.75em;
+ }
+
+ .health_notice {
+   color: #3AA655;
+   font-weight: bold;
+   font-size: 0.75em;
+ }
 
  .options-container {
    display: grid;
